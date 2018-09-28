@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- Define dependency / helper -->
+	<bean id="myFortuneService"
+		class="com.luv2code.springdemo.HappyFortuneService">
+	</bean>
+
+	<!-- Inject the dependency / helper using constructor injection -->
+	<!-- TrackCoach myCoach = new TrackCoach(myFortuneService) -->
+	<bean id="myCoach" class="com.luv2code.springdemo.TrackCoach"
+		scope="prototype" init-method="doMyStartupStuff"
+		destroy-method="doMyDestroyStuff">
+
+		<!-- set up constructor injection -->
+		<constructor-arg ref="myFortuneService"></constructor-arg>
+	</bean>
+
+	<bean id="mySingletonCoach"
+		class="com.luv2code.springdemo.TrackCoach" scope="singleton"
+		init-method="doMyStartupStuff" destroy-method="doMyDestroyStuff">
+	</bean>
+
+	<bean id="myPrototypeCoach"
+		class="com.luv2code.springdemo.TrackCoach" scope="prototype"
+		init-method="doMyStartupStuff" destroy-method="doMyDestroyStuff">
+	</bean>
+
+
+</beans>
