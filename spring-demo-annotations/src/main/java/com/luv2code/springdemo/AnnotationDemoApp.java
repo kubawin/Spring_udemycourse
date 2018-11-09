@@ -20,6 +20,11 @@ public class AnnotationDemoApp {
 		//call method to get daily fortune
 		System.out.println(theCoach.getDailyFortune());
 
+		//call our new swim coach getter methods
+
+		System.out.println("email: "+theCoach.getEmail());
+		System.out.println("team: "+theCoach.getTeam());
+
 		//close the context
 		context.close();
 	}
